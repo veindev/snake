@@ -1,13 +1,3 @@
-function Vector2(x, y) {
-    this.x = x
-    this.y = y
-}
-
-function clearScreen(){
-    ctx.fillStyle = BACKGROUND_COLOR;
-    ctx.fillRect(0, 0, WIDTH_SIZE, WIDTH_SIZE);
-}
-
 class Snake {
     constructor() {
         this.body = [
@@ -19,7 +9,6 @@ class Snake {
     }
 
     draw(){
-        clearScreen()
         ctx.fillStyle = SNAKE_COLOR
         for(let position of this.body){
             ctx.fillRect(position.x, position.y,CELL_SIZE,CELL_SIZE)
@@ -30,7 +19,6 @@ class Snake {
         if(this.body[0].x > WIDTH_SIZE - CELL_SIZE){
             this.body[0].x = 0;
         }
-
         if(this.body[0].x < 0){
             this.body[0].x = WIDTH_SIZE - CELL_SIZE;
         }
@@ -60,8 +48,6 @@ class Snake {
         this.body.push({...this.body.slice(-1)})
     }
     
-
-
     update(){
         this.move()
         this.draw()
